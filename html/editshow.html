@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>源码与渲染结果</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        #editor, #preview {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow: auto;
+        }
+        #editor {
+            font-family: monospace;
+            white-space: pre;
+            background-color: #f4f4f4;
+        }
+        #preview {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+<textarea id="editor" rows="20" cols="50">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>示例页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>这是一个示例页面。</p>
+</body>
+</html>
+</textarea>
+
+<iframe id="preview"></iframe>
+
+<script>
+    const editor = document.getElementById('editor');
+    const preview = document.getElementById('preview');
+
+    function updatePreview() {
+        // 获取编辑器内容并插入到预览区域
+        preview.srcdoc = editor.value;
+    }
+
+    // 实时更新预览
+    editor.addEventListener('input', updatePreview);
+
+    // 初始化预览
+    updatePreview();
+</script>
+
+</body>
+</html>
